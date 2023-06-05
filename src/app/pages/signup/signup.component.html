@@ -1,0 +1,64 @@
+
+  <section class="vh-100 gradient-custom">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-md-6 col-lg-6 col-xl-5" style="max-width: 400px;">
+          <div class="card bg-dark text-white" style="border-radius: 1rem;">
+            <div class="card-body p-5 text-center">
+  
+              <div class="mb-md-5 mt-md-4 pb-5">
+  
+                <h2 class="fw-bold mb-2 text-uppercase">Register</h2>
+                <br>
+                <br>
+                <!-- <p class="text-white-50 mb-5">Please enter your login and password!</p> -->
+                
+                <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+  
+                  <div class="form-outline form-white mb-4">                   
+                    <input type="Username" class="form-control form-control-lg mb-" id="username" placeholder="Username" formControlName="username" >
+                    <div *ngIf="signupForm.get('username')!.invalid && (signupForm.get('username')!.dirty || signupForm.get('username')!.touched)" class="alert alert-danger">
+                      <div *ngIf="signupForm.get('username')!.hasError('required')">Username is required.</div>
+                    </div>
+                  </div>
+    
+                  <div class="form-outline form-white mb-4">
+                    <input type="email" id="typeEmailX" placeholder="Email" class="form-control form-control-lg mb-" formControlName="email" />  
+                    <div *ngIf="signupForm.get('email')!.invalid && (signupForm.get('email')!.dirty || signupForm.get('email')!.touched)">
+                      <div class="text-danger" *ngIf="signupForm.get('email')!.hasError('required')">Email is required</div>
+                      <div class="text-danger" *ngIf="signupForm.get('email')!.hasError('email')">Email is invalid</div>
+                    </div>
+                  </div>
+  
+                  <div class="form-outline form-white mb-4">
+                    <input type="password" id="typePasswordX" placeholder="Password" class="form-control form-control-lg" formControlName="password" />
+                    <div *ngIf="signupForm.get('password')!.invalid && (signupForm.get('password')!.dirty || signupForm.get('password')!.touched)">
+                      <div class="text-danger" *ngIf="signupForm.get('password')!.hasError('required')">Password is required</div>
+                    </div>
+                  </div>
+
+                  <div class="form-outline form-white mb-4">
+                    <input type="password" class="form-control form-control-lg" id="confirm-password" placeholder="Confirm Password" formControlName="confirmPassword">
+                    <div *ngIf="signupForm.get('confirmPassword')!.invalid && (signupForm.get('confirmPassword')!.dirty || signupForm.get('confirmPassword')!.touched)" class="alert alert-danger">
+                      <div *ngIf="signupForm.get('confirmPassword')!.hasError('required')">Confirm Password is required.</div>
+                      <div *ngIf="signupForm.hasError('passwordMismatch')">Passwords do not match.</div>
+                    </div>
+                  </div>
+                                     
+                  <button class="btn btn-outline-light btn-lg px-5" type="submit" >Register</button>
+                  <hr> 
+                </form>
+  
+                <div>
+                  <p class="mb-0">Already have an account? <a href="/signin" class="text-white-50 fw-bold">Login</a>
+                  </p>
+                </div>
+  
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
+  <router-outlet></router-outlet>
